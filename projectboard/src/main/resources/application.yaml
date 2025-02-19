@@ -32,7 +32,7 @@ spring:
         default_batch_fetch_size: 100
   h2:
     console:
-      enabled: false
+      enabled: true
 
   sql:
     init:
@@ -44,3 +44,17 @@ spring:
 
 
 ---
+
+#spring:
+#  config:
+#    activate:
+#      on-profile: testdb
+#  datasource:
+#    url: jdbc:h2:mem:board;mode=mysql
+#    driver-class-name: org.h2.Driver
+
+#  sql:
+#    init:
+#    mode: always
+
+#  test.databse.replace: none
