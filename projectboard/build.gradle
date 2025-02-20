@@ -30,6 +30,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -42,6 +43,10 @@ dependencies {
 	testImplementation 'org.assertj:assertj-core:3.24.2' // AssertJ
 	testImplementation 'org.mockito:mockito-core:5.2.0' // Mockito
 	testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0' // JUnit 5 + Mockito 통합
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' //jdbc ㅇㅇ
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
 }
 
 tasks.named('test') {
