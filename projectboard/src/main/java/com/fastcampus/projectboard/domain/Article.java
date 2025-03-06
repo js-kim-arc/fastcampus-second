@@ -36,7 +36,7 @@ public class Article extends AuditingFields {
     //jpa 기능들은 보통 요정도 위치에 -
     @ToString.Exclude
     @OrderBy("id")
-    @OneToMany(mappedBy = "article",cascade = CascadeType.ALL )
+    @OneToMany(mappedBy = "article",cascade = CascadeType.ALL,orphanRemoval = true )
     private final Set<ArticleComment> articleComments=new LinkedHashSet<>();
 
 
@@ -63,4 +63,5 @@ public class Article extends AuditingFields {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
