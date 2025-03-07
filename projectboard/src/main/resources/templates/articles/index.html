@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
-=======
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -24,8 +13,8 @@ $END$
 </head>
 
 <body>
-<header id="header">
-    헤더 삽입부
+<header th:replace="header :: header" id="header">
+    헤더 삽입부 왜 안되는거야
     <hr>
 </header>
 
@@ -118,7 +107,7 @@ $END$
     </div>
 </main>
 
-<footer id="footer">
+<footer id="footer" th:replace="footer::footer">
     <hr>
     푸터 삽입부
 </footer>
@@ -126,4 +115,3 @@ $END$
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
-
