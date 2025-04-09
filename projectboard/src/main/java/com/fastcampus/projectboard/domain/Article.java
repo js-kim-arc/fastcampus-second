@@ -25,31 +25,45 @@ import java.util.Set;
 })
 @Entity
 public class Article extends AuditingFields {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
+
+    @Setter
+    @JoinColumn(name = "userId")
+    @ManyToOne(optional = false)
+    private UserAccount userAccount; // 유저 정보 (ID)
 
 
     @Setter @Column(nullable = false) private String title;                   //제목
-    @Setter @Column(nullable = false, length = 500) private String content;                 //본문
-    @Setter private String hashtag;                 //해시태그
+    @Setter @Column(nullable = false, length = 1000) private String content;                 //본문
+
+    @ToString.Exclude
+    @JoinTable(
+            name = "article_hashtag",
+            joinColumns = @JoinColumn(name = "articleId"),
+            inverseJoinColumns = @JoinColumn(name = "hashtagId")
+    )
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Hashtag> hashtags = new LinkedHashSet<>();
 
 
     //jpa 기능들은 보통 요정도 위치에 -
     @ToString.Exclude
-    @OrderBy("id")
-    @OneToMany(mappedBy = "article",cascade = CascadeType.ALL,orphanRemoval = true )
+    @OrderBy("createdAt desc ")
+    @OneToMany(mappedBy = "article",cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments=new LinkedHashSet<>();
 
 
     protected Article(){}
 
-    private Article(String title, String content, String hashtag) {
+    private Article(UserAccount userAccount, String title, String content) {
+        this.userAccount = userAccount;
         this.title = title;
         this.content = content;
-        this.hashtag = hashtag;
     }
 
-    public static Article of(String title, String content, String hashtag) {
-        return new Article(title,content,hashtag);
+    public static Article of(UserAccount userAccount, String title, String content) {
+        return new Article(userAccount, title, content);
     }
 
     @Override
@@ -64,4 +78,6 @@ public class Article extends AuditingFields {
         return Objects.hash(id);
     }
 
+    public void addHashtags(Set<Hashtag> hashtag) {
+    }
 }

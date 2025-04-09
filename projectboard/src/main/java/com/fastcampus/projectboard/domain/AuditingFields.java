@@ -26,11 +26,13 @@ public abstract class AuditingFields {
     @Column(nullable = false) private LocalDateTime createdAt;           //생성일시
 
     @CreatedBy
-    @Column(nullable = false) private String createdBy;                   //생성자
+    @Column(nullable = false)
+    String createdBy;                   //생성자
 
     @LastModifiedDate
     @Column(nullable = false) private LocalDateTime modifiedAt;           //수정일시
 
     @LastModifiedBy
-    @Column(nullable = false) private String modifiedBy;
+    @Column(nullable = false)
+    String modifiedBy;
 }
