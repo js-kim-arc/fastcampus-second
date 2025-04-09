@@ -26,6 +26,8 @@ public class QArticleComment extends EntityPathBase<ArticleComment> {
 
     public final QArticle article;
 
+    public final SetPath<ArticleComment, QArticleComment> childComments = this.<ArticleComment, QArticleComment>createSet("childComments", ArticleComment.class, QArticleComment.class, PathInits.DIRECT2);
+
     public final StringPath content = createString("content");
 
     //inherited
@@ -41,6 +43,10 @@ public class QArticleComment extends EntityPathBase<ArticleComment> {
 
     //inherited
     public final StringPath modifiedBy = _super.modifiedBy;
+
+    public final NumberPath<Long> parentCommentId = createNumber("parentCommentId", Long.class);
+
+    public final QUserAccount userAccount;
 
     public QArticleComment(String variable) {
         this(ArticleComment.class, forVariable(variable), INITS);
@@ -60,7 +66,8 @@ public class QArticleComment extends EntityPathBase<ArticleComment> {
 
     public QArticleComment(Class<? extends ArticleComment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.article = inits.isInitialized("article") ? new QArticle(forProperty("article")) : null;
+        this.article = inits.isInitialized("article") ? new QArticle(forProperty("article"), inits.get("article")) : null;
+        this.userAccount = inits.isInitialized("userAccount") ? new QUserAccount(forProperty("userAccount")) : null;
     }
 
 }
