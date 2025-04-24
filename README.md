@@ -6,7 +6,7 @@
   <img src="https://github.com/user-attachments/assets/8b291ac8-545d-42f6-92c8-83e63fc98014" alt="Cookie" width="200px" height="200px" />
   <br />
   <h1>쿠키(Cookie)</h1>
-  
+  <img src="https://github.com/user-attachments/assets/bb5b19f4-5086-4895-bfa8-67ddff7e48ca" width="600"/>
 </div>
 
 ## 목차
